@@ -10,10 +10,11 @@ class Paddle:
 
     def move(self, dy, screen_height):
         self.y += dy
+        # Keep paddle inside screen
         self.y = max(0, min(self.y, screen_height - self.height))
 
     def rect(self):
-        return pygame.Rect(self.x, self.y, self.width, self.height)
+        return pygame.Rect(int(self.x), int(self.y), self.width, self.height)
 
     def auto_track(self, ball, screen_height):
         if ball.y < self.y:
